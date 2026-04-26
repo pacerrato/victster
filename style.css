@@ -134,12 +134,14 @@ h2 {
         margin: 0 0.5em 0.5em;
     }
     select {
-        margin-left: 1em;
+        padding: 0.25em 0.5em;
         width: 85%;
         font-size: 2.5em;
         font-family: 'orbitron';
+        align-self: center;
     }
     option {
+        font-family: 'orbitron';
         font-size: 0.3em;
     }
 }
