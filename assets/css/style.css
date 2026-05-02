@@ -6,31 +6,35 @@ html, body{
 }
 
 @font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Open Sans'), local('OpenSans'), url('http://themes.googleusercontent.com/static/fonts/opensans/v5/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff') format('woff');
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 100 700;
+    src: url(fonts/font.woff2) format('woff2');
 }
-
+@font-face {
+    font-family: 'Orbitron';
+    font-style: normal;
+    font-weight: 400 900;
+    font-display: swap;
+    src: url(../fonts/Orbitron.woff2) format('woff2'), url(../fonts/Orbitron.woff) format ('woff'), url(../fonts/Orbitron.ttf) format ('truetype');
+}
 h1 {
     letter-spacing: -7px;
-    font-size: 12em;
+    font-size: 10em;
     color: white;
-    font-family: 'orbitron';
+    font-family: 'Orbitron';
     font-weight: lighter;
     text-shadow: 12px 12px 15px #ff00ff;
     margin-bottom: 0.2em;
     transform: scale(1,1.25);
 }
-
 h2 {
     font-size: 3em;
     padding: 1em;
-    font-family: 'orbitron';
+    font-family: 'Orbitron';
     color: white;
 }
-
-#main-menu {
+#main-menu, #mode, #scan, #category {
     height: 100%;
     width: 100%;
     display: flex;
@@ -38,7 +42,6 @@ h2 {
     align-items: center;
     background-image: linear-gradient(to bottom, #1a090d, #6b6570);
 }
-
 
 @keyframes subtitle-animation {
     0% {border-color: #4deeea; box-shadow: 0px 0px 10px 10px rgba(77, 238, 234, 0.5);}
@@ -55,7 +58,9 @@ h2 {
     animation-iteration-count: infinite;
     box-shadow: 0px 0px 10px 10px rgba(77, 238, 234, 0.5);
 }
-
+#subtitle sup{
+    font-size: 0.75em;
+}
 .button {
     display:flex;
     justify-content: center;
@@ -69,7 +74,7 @@ h2 {
     font-size: 3em;
     color: white;
     font-weight: bold;
-    font-family: 'orbitron';
+    font-family: 'Orbitron';
     margin-bottom: 1em;
     text-decoration: none;
     &:active {
@@ -103,9 +108,6 @@ h2 {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
-/* .hide {
-    display: none;
-} */
 #settings-box {
     position: absolute;
     background-color: #4c484e;
@@ -127,7 +129,7 @@ h2 {
         text-align: center;
     }
     label {
-        font-family: 'orbitron';
+        font-family: 'Orbitron';
         color: rgb(241, 241, 241);
         font-size: 4em;
         padding: 0;
@@ -137,11 +139,11 @@ h2 {
         padding: 0.25em 0.5em;
         width: 85%;
         font-size: 2.5em;
-        font-family: 'orbitron';
+        font-family: 'Orbitron';
         align-self: center;
     }
     option {
-        font-family: 'orbitron';
+        font-family: 'Orbitron';
         font-size: 0.3em;
     }
 }
@@ -155,20 +157,124 @@ h2 {
     width: 100%;
     height: 100%;
 }
-#close-button {
+.close-button {
     position: absolute;
     top: 1em;
     right: 1em;
     border: none;
-    background-color: transparent;
-    i {
-        font-size: 6em;
-        color: white;
-    }
+    mask: url("../media/svg/close.svg") center / contain no-repeat;
+    width: 8em;
+    height: 8em;
+    background-color: white;
+    
 }
 #save-button {
     margin: auto;
     margin-bottom: 2em;
     width: 40%;
     font-size: 3em;
+}
+/*Mode Page*/
+
+#mode h2{
+    font-size: 6em;
+    font-weight: lighter;
+    text-shadow: 12px 12px 15px #ff00ff;
+}
+#mode .button{
+    flex-direction: column;
+    width: auto;
+    padding: 0.5em 1em;
+}
+
+#mode .mode-normal{
+    background-color: #2323ff;
+    border: 1px solid #2323ff;
+    box-shadow: 0px 0px 10px 10px rgba(35, 35, 255, 0.5);
+}
+
+#mode .mode-bingo-easy{
+    margin-top: 2em;
+}
+
+/*Scan page*/
+
+#scan h2 {
+    font-family: 'Orbitron';
+    font-size: 5em;
+    font-weight: lighter;
+    text-shadow: 12px 12px 15px #ff00ff;
+    padding: 0.5em 0 0 0;
+}
+#scan marquee {
+    font-family: 'Orbitron';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 3em;
+    color: white;
+    font-weight: lighter;
+}
+
+#qr-reader {
+    width: 100%;
+    border: 0;
+}
+
+#category h2 {
+    font-size: 5em;
+    width: 60%;
+    text-align: center;
+}
+
+#category.e1, #category.h1, #category.e1 h2, #category.h1 h2 {
+  background-image: linear-gradient(to bottom, #23775e, #30b88f);
+}
+#category.e1 h2, #category.h1 h2 {
+  text-shadow: 12px 12px 15px #23775e;
+  border-radius: 50px;
+}
+#category.e2, #category.h2, #category.e2 h2, #category.h2 h2 {
+  background-image: linear-gradient(to bottom, #cc4689, #e074aa);
+}
+#category.e2 h2, #category.h2 h2 {
+  text-shadow: 12px 12px 15px #cc4689;
+  border-radius: 50px;
+}
+#category.e3, #category.h3, #category.e3 h2, #category.h3 h2 {
+  background-image: linear-gradient(to bottom, #e77c01, #ffb84d);
+}
+#category.e3 h2, #category.h3 h2 {
+  text-shadow: 12px 12px 15px #e77c01;
+  border-radius: 50px;
+}
+#category.e4, #category.h4, #category.e4 h2, #category.h4 h2 {
+  background-image: linear-gradient(to bottom, #7c0986, #c53fd1);
+}
+#category.e4 h2, #category.h41 h2 {
+  text-shadow: 12px 12px 15px #7c0986;
+  border-radius: 50px;
+}
+#category.e5, #category.h5, #category.e5 h2, #category.h5 h2 {
+  background-image: linear-gradient(to bottom, #240986, #0c4ea5);
+}
+#category.e5 h2, #category.h5 h2 {
+  text-shadow: 12px 12px 15px #240986;
+  border-radius: 50px;
+}
+
+#category .card{
+    display: flex;
+    justify-content: center;
+    margin-top: 25em;
+    padding: 5em 0;
+}
+
+#category .button{
+    margin-top: 0.5em;
+    width: 70%;
+    background-color: #545454;
+    border: 1px solid #545454;
+    border-radius: 0.5em;
+    box-shadow: 0px 0px 10px 10px rgba(146, 146, 146, 0.5);
 }

@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Main menu</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">  
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="settings.js"></script>
-    <script src="play/scripts/qrlib.js"></script>
-<script>
-    function PlayMusic() {
-        var play=document.getElementById("welcome-song");
-        play.play();
-    }
+    <title>VICTSTER</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/qrlib.js"></script>
+
+    <script>
+        function PlayMusic() {
+            var play=document.getElementById("welcome-song");
+            play.play();
+        }
     </script>
 </head>
 <body>
     <div id="main-menu">
-        <audio id="welcome-song"><source src="media/release-me.mp3" type="audio/mpeg"></audio>
-        <h1>HITSTER</h1>
-        <h2 id="subtitle">Victi super special edition</h2>
-        <img id="vinyl" src="media/vinilo.webp">
-        <a href="play/normal/scan.html" class="button">Play!</a>
+        <audio id="welcome-song"><source src="assets/media/release-me.mp3" type="audio/mpeg"></audio>
+        <h1>VICTSTER</h1>
+        <h2 id="subtitle">24<sup>th</sup> anniversary edition</h2>
+        <img id="vinyl" src="assets/media/vinilo.webp">
+        <a href="pages/mode.html" class="button">Play!</a>
         <button id="settings-button" class="button" onclick="openSettings();">Configuración</button>
-
+        
         <!-- Settings box -->
         <div id="settings-box" class="hide">
             <div id="settings-content">
-                <button id="close-button" onclick="closeSettings();"><i class="material-icons">close</i></button>
+                <button class="close-button" onclick="closeSettings();"></button>
                 <h2>Configuración</h2>
                 <label for="camera">Cámara:</label>
                 <select name="camera" id="camera-select">
@@ -37,8 +34,6 @@
             </div>
         </div>
     </div>
-
-    
     <script>setTimeout(PlayMusic,100); loadCameras();</script>
 </body>
 </html>

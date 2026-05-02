@@ -1,0 +1,56 @@
+{
+    "easy": [ 
+        {
+            "id": "e1",
+            "name": "Grupo o solista",
+            "color": "green"
+        },
+        {
+            "id": "e2",
+            "name": "¿Anterior al 2015?",
+            "color": "pink"
+        },
+        {
+            "id": "e3",
+            "name": "4 años arriba o abajo",
+            "color": "yellow"
+        },
+        {
+            "id": "e4",
+            "name": "Década",
+            "color": "purple"
+        },
+        {
+            "id": "e5",
+            "name": "2 años arriba o abajo",
+            "color": "blue"
+        }
+    ],
+    "hard": [ 
+        {
+            "id": "h1",
+            "name": "Título de la canción",
+            "color": "green"
+        },
+        {
+            "id": "h2",
+            "name": "Año exacto",
+            "color": "pink"
+        },
+        {
+            "id": "h3",
+            "name": "Nombre del grupo o solista",
+            "color": "yellow"
+        },
+        {
+            "id": "h4",
+            "name": "Lustro",
+            "color": "purple"
+        },
+        {
+            "id": "h5",
+            "name": "3 años arriba o abajo",
+            "color": "blue"
+        }
+    ]
+}

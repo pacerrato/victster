@@ -1,4 +1,5 @@
 function getCameraId() {
+  
     var cookies = decodeURIComponent(document.cookie);
     return ""+cookies.match(/(?<=cameraId\=).+?(?=;|$)/);
 }
@@ -8,6 +9,17 @@ function scanQr() {
     var cameraId = getCameraId();
     html5Qrcode.start(cameraId, config, onScanSuccess);
     function onScanSuccess(decodedText, decodedResult) {
-        window.location.replace(window.origin+"/play/normal/song.html?song="+decodedText);
+        window.location.replace(window.origin+"/pages/song.html?song="+decodedText);
+    }
+};
+
+function scanBackPage() {
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get('mode');
+    const id = params.get('id')
+    if (mode === 'normal') {
+        window.location.href = "/pages/mode.html"
+    } else {
+            window.location.href = "/pages/category.html?mode=bingo&id="+id
     }
 };

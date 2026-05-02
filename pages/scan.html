@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/qrlib.js"></script>
+    <script src="../assets/js/qrscan.js"></script>
+    <title>Scan</title>
+</head>
+<body>
+    <div id="scan">
+        <h2>Escanea una carta</h2>
+        <div id="qr-reader"></div>
+        <marquee scrollamount="25" direction="left" behaviour="alternate">¡Escanea el QR de la siguiente carta!</marquee>
+    </div>
+    <script>scanQr();</script>
+    <button class="close-button" onclick="scanBackPage()"></button>
+</body>
+</html>
