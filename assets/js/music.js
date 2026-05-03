@@ -1,44 +1,81 @@
 function loadSong() {
-    currentSong = "song" + window.location.search.match(/(?<=\?song\=)\d+/);
-    document.getElementById("song-source").src = "../../media/audio/"+currentSong+".opus";
+    const params = new URLSearchParams(window.location.search);
+    const song = params.get('song');
+    const id = params.get('id');
+    updateText(id);
+    document.getElementById("song-source").src = "../assets/media/audio/song"+song+".opus";
     document.getElementById("song").load();
 }
 
+function updateText(id) {
+    if(id){
+        const level = id.includes("e")?"easy":"hard";
+        fetch("../assets/data/categories.json")
+        .then(res => res.json())
+        .then(data => {
+            for (const level in data) {
+                const item = data[level].find(el => el.id === id);
+                if (item) return  document.getElementById("song-status").innerHTML = item.name;
+            }
+            return null;
+        })
+        .catch(err => console.error("Error cargando JSON:", err));
+    }else{
+        document.getElementById("song-status").innerHTML = "¡Adivina la canción!";
+    }
+}
+
 function playButtonPushed() {
-    var audio = document.getElementById("song");
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const button = document.getElementById("play-pause");
+    const audio = document.getElementById("song");
     if (audio.paused) {
         audio.play();
-        document.getElementById("play-button").innerHTML = "pause";
-        document.getElementById("song-status").innerHTML = "¡Adivina la canción!"
+        updateText(id)
+        button.classList.remove("play")
+        button.classList.add("pause")
     } else {
         audio.pause();
-        document.getElementById("play-button").innerHTML = "play_arrow";
+        button.classList.remove("pause")
+        button.classList.add("play")
         document.getElementById("song-status").innerHTML = "Canción en pausa."
     }
 }
 
 function replayButtonPushed() {
-    var audio = document.getElementById("song");
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const button = document.getElementById("play-pause");
+    const audio = document.getElementById("song");
     if (audio.paused) {
         audio.currentTime = 0;
         audio.play();
-        document.getElementById("play-button").innerHTML = "pause";
+        button.classList.remove("play")
+        button.classList.add("pause")
     } else {
         audio.currentTime = 0;
     }
-    document.getElementById("song-status").innerHTML = "¡Adivina la canción!"
+    updateText(id);
 }
 
 function showSolution() {
-    document.getElementById("sol-button").classList.add("hide");
+    const params = new URLSearchParams(window.location.search);
+    const song = params.get('song');
+    document.getElementById("song").pause();
     document.getElementById("music-panel").classList.add("hide");
-    document.getElementById("song-info").classList.remove("hide");
-    document.getElementById("scan-button").classList.remove("hide");
+    document.getElementById("music-info").classList.remove("hide");
+    
+    fetch("../assets/data/songs.json")
+    .then(res => res.json())
+    .then(data => {
+        const item = data.find(el => el.filename === "song"+song);
+        document.getElementById("song-info").innerHTML = `
+                <p id="artist"><b>${item.artist}</b></p>
+                <p id="year">${item.year}</h2>
+                <p id="title"><i>${item.title}</i></p>`;
+        
+    })
+    .catch(err => console.error("Error cargando JSON:", err));
 }
 
-function scanNext() {
-    var audio = document.getElementById("song");
-    audio.pause();
-    document.getElementById("song-source").src = ""
-    audio.load();
-}

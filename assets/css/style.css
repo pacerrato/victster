@@ -34,7 +34,7 @@ h2 {
     font-family: 'Orbitron';
     color: white;
 }
-#main-menu, #mode, #scan, #category {
+#main-menu, #mode, #scan, #category, #songs {
     height: 100%;
     width: 100%;
     display: flex;
@@ -168,6 +168,27 @@ h2 {
     background-color: white;
     
 }
+.play-button {
+    border: none;
+    mask: url("../media/svg/play.svg") center / contain no-repeat;
+    width: 8em;
+    height: 8em;
+    background-color: white;
+}
+.pause-button {
+    border: none;
+    mask: url("../media/svg/pause.svg") center / contain no-repeat;
+    width: 8em;
+    height: 8em;
+    background-color: white;
+}
+.replay-button {
+    border: none;
+    mask: url("../media/svg/replay.svg") center / contain no-repeat;
+    width: 8em;
+    height: 8em;
+    background-color: white;
+}
 #save-button {
     margin: auto;
     margin-bottom: 2em;
@@ -228,39 +249,39 @@ h2 {
 }
 
 #category.e1, #category.h1, #category.e1 h2, #category.h1 h2 {
-  background-image: linear-gradient(to bottom, #23775e, #30b88f);
+    background-image: linear-gradient(to bottom, #23775e, #30b88f);
 }
 #category.e1 h2, #category.h1 h2 {
-  text-shadow: 12px 12px 15px #23775e;
-  border-radius: 50px;
+    text-shadow: 12px 12px 15px #23775e;
+    border-radius: 50px;
 }
 #category.e2, #category.h2, #category.e2 h2, #category.h2 h2 {
-  background-image: linear-gradient(to bottom, #cc4689, #e074aa);
+    background-image: linear-gradient(to bottom, #cc4689, #e074aa);
 }
 #category.e2 h2, #category.h2 h2 {
-  text-shadow: 12px 12px 15px #cc4689;
-  border-radius: 50px;
+    text-shadow: 12px 12px 15px #cc4689;
+    border-radius: 50px;
 }
 #category.e3, #category.h3, #category.e3 h2, #category.h3 h2 {
-  background-image: linear-gradient(to bottom, #e77c01, #ffb84d);
+    background-image: linear-gradient(to bottom, #e77c01, #ffb84d);
 }
 #category.e3 h2, #category.h3 h2 {
-  text-shadow: 12px 12px 15px #e77c01;
-  border-radius: 50px;
+    text-shadow: 12px 12px 15px #e77c01;
+    border-radius: 50px;
 }
 #category.e4, #category.h4, #category.e4 h2, #category.h4 h2 {
-  background-image: linear-gradient(to bottom, #7c0986, #c53fd1);
+    background-image: linear-gradient(to bottom, #7c0986, #c53fd1);
 }
 #category.e4 h2, #category.h41 h2 {
-  text-shadow: 12px 12px 15px #7c0986;
-  border-radius: 50px;
+    text-shadow: 12px 12px 15px #7c0986;
+    border-radius: 50px;
 }
 #category.e5, #category.h5, #category.e5 h2, #category.h5 h2 {
-  background-image: linear-gradient(to bottom, #240986, #0c4ea5);
+    background-image: linear-gradient(to bottom, #240986, #0c4ea5);
 }
 #category.e5 h2, #category.h5 h2 {
-  text-shadow: 12px 12px 15px #240986;
-  border-radius: 50px;
+    text-shadow: 12px 12px 15px #240986;
+    border-radius: 50px;
 }
 
 #category .card{
@@ -277,4 +298,95 @@ h2 {
     border: 1px solid #545454;
     border-radius: 0.5em;
     box-shadow: 0px 0px 10px 10px rgba(146, 146, 146, 0.5);
+}
+.hide {
+    display: none!important;
+}
+#songs .music-controls {
+    display: flex;
+    justify-content: center;
+    gap: 5em;
+}
+#songs .music-controls div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8em;
+    height: 8em;
+    border: 1px solid #ff00ff;
+    border-radius: 5em;
+    background-color: #ff00ff;
+    box-shadow: 0px 0px 15px 15px #ff00ffa0;
+}
+#songs #music-panel, #songs #music-info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5em;
+    height: 100%;
+}
+#songs .next-button {
+    width: 600px;
+    height: 150px;
+    margin-bottom: 2.5em;
+    font-size: 3em;
+    font-family: 'orbitron';
+    color: white;
+    border: 1px solid #ff00ff;
+    background-color: #ff00ff;
+    box-shadow: 0px 0px 15px 15px #ff00ffa0;
+}
+
+#songs .next-button:active {
+    background-color: #cc00cc;
+    border: 1px solid #cc00cc;
+    box-shadow: 0px 0px 15px 15px #cc00cca0;
+    transform: scale(0.9,0.9);
+}
+
+#songs #song-status{
+    text-align: center;
+    font-family: 'orbitron';
+    font-weight: lighter;
+    font-size: 4em;
+    color: white;
+}
+#songs button.play {
+    width: 8em;
+    height: 8em;
+    font-size: unset;
+    border: none;
+    background-color: white;
+    mask: url("../media/svg/play.svg") center / contain no-repeat;
+}
+#songs button.pause{
+    width: 8em;
+    height: 8em;
+    font-size: unset;
+    border: none;
+    background-color: white;
+    mask: url("../media/svg/pause.svg") center / contain no-repeat;
+}
+#songs #song-info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 5em;
+    padding: 5em;
+    background-image: linear-gradient(to bottom, #1a090d, #6b6570);
+    text-shadow: 12px 12px 15px #272727;
+    border-radius: 50px;
+}
+#songs #song-info p{
+    margin: 0;
+    font-size: 4em;
+    color: white;
+    font-family: 'Orbitron';
+    font-weight: lighter;
+    transform: scale(1,1.25);
+}
+#songs #song-info #year{
+    font-size: 8em;
 }

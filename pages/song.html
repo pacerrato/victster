@@ -2,33 +2,33 @@
 <html>
 <head>
     <title>¡Adivina la canción!</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="../scripts/music.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/music.js"></script>
 </head>
 <body>
-    <div class="main-container">
-        <h1 class="big">HITSTER</h1>
-        <div id="music-panel">
-            <h3 id="song-status">Cargando canción...</h3>
-            <audio id="song"><source id="song-source" src="../../media/audio/song00.opus" type="audio/ogg"></audio>
+    <div id="songs">
+        <div id="music-panel" class="">
+            <p id="song-status">Cargando canción...</p>
+            <audio id="song"><source id="song-source" src="" type="audio/ogg"></audio>
             <script>loadSong();</script>
             <div class="music-controls">
-                <button class="music-button" onclick="playButtonPushed();"><i id="play-button" class="material-icons">play_arrow</i></button>
-                <button class="music-button" onclick="replayButtonPushed();"><i class="material-icons">replay</i></button>
+                <div>
+                <button id="play-pause" onclick="playButtonPushed();"></button>
+                </div>
+                     <div>
+                <button class="replay-button" onclick="replayButtonPushed();"></button>
+                </div>
             </div>
             <script>playButtonPushed();</script>
+            <button id="sol-button" class="next-button" onclick="showSolution();">Ver solución</button>
         </div>
-        <div id="song-info" class="hide">
-            <h2 id="artist"><b>Bad Gyal</b></h2>
-            <h2 id="year">1823</h2>
-            <h2 id="title">Sonata No. 5</h2>
+
+        <div id="music-info" class="hide">
+            <div id="song-info"></div>
+            <a id="scan-button" href="scan.html"><button class="next-button">Siguiente canción 🡢</button></a>
         </div>
-        <button id="sol-button" class="next-button" onclick="showSolution();">Ver solución</button>
-        <a id="scan-button" class="hide" href="scan.html"><button class="next-button">Siguiente canción 🡢</button></a>
+
+
     </div>
 </body>
 </html>
