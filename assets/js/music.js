@@ -1,8 +1,26 @@
+document.addEventListener("DOMContentLoaded", () => {
+    document
+        .getElementById("play-pause")
+        .addEventListener("click", playButtonPushed);
+
+    document
+        .querySelector(".replay-button")
+        .addEventListener("click", replayButtonPushed);
+
+    document
+        .getElementById("sol-button")
+        .addEventListener("click", showSolution);
+
+    loadSong();
+    playButtonPushed()
+});
+
 function loadSong() {
     const params = new URLSearchParams(window.location.search);
     const song = params.get('song');
     const id = params.get('id');
     updateText(id);
+
     document.getElementById("song-source").src = "../assets/media/audio/song"+song+".opus";
     document.getElementById("song").load();
 }
@@ -27,22 +45,31 @@ function updateText(id) {
 
 function playButtonPushed() {
     const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
+    const id = params.get("id");
+
     const button = document.getElementById("play-pause");
     const audio = document.getElementById("song");
+
     if (audio.paused) {
-        audio.play();
-        updateText(id)
-        button.classList.remove("play")
-        button.classList.add("pause")
+        audio.play()
+            .then(() => {
+                updateText(id);
+
+                button.classList.remove("play");
+                button.classList.add("pause");
+            })
+            .catch(err => console.error("Play bloqueado:", err));
+
     } else {
         audio.pause();
-        button.classList.remove("pause")
-        button.classList.add("play")
-        document.getElementById("song-status").innerHTML = "Canción en pausa."
+
+        button.classList.remove("pause");
+        button.classList.add("play");
+
+        document.getElementById("song-status").textContent =
+            "Canción en pausa.";
     }
 }
-
 function replayButtonPushed() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');

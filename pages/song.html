@@ -3,6 +3,7 @@
 <head>
     <title>¡Adivina la canción!</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/navigation.js"></script>
     <script src="../assets/js/music.js"></script>
 </head>
 <body>
@@ -10,25 +11,21 @@
         <div id="music-panel" class="">
             <p id="song-status">Cargando canción...</p>
             <audio id="song"><source id="song-source" src="" type="audio/ogg"></audio>
-            <script>loadSong();</script>
             <div class="music-controls">
                 <div>
-                <button id="play-pause" onclick="playButtonPushed();"></button>
+                    <button id="play-pause" class="pause"></button>
                 </div>
-                     <div>
-                <button class="replay-button" onclick="replayButtonPushed();"></button>
+                <div>
+                    <button class="replay-button"></button>
                 </div>
             </div>
-            <script>playButtonPushed();</script>
-            <button id="sol-button" class="next-button" onclick="showSolution();">Ver solución</button>
+            <button id="sol-button" class="next-button">Ver solución</button>
         </div>
-
+        
         <div id="music-info" class="hide">
             <div id="song-info"></div>
-            <a id="scan-button" href="scan.html"><button class="next-button">Siguiente canción 🡢</button></a>
+            <button id="scan-button" class="next-button" onclick="goNextFromSong()">Siguiente canción 🡢</button>
         </div>
-
-
     </div>
 </body>
 </html>

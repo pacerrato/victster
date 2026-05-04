@@ -43,6 +43,10 @@ h2 {
     background-image: linear-gradient(to bottom, #1a090d, #6b6570);
 }
 
+#scan{
+    justify-content: center;
+}
+
 @keyframes subtitle-animation {
     0% {border-color: #4deeea; box-shadow: 0px 0px 10px 10px rgba(77, 238, 234, 0.5);}
     33% {border-color: #f000ff; box-shadow: 0px 0px 10px 10px rgba(240, 0, 255, 0.5);}
@@ -246,6 +250,7 @@ h2 {
     font-size: 5em;
     width: 60%;
     text-align: center;
+    transition: all .25s ease;
 }
 
 #category.e1, #category.h1, #category.e1 h2, #category.h1 h2 {
@@ -272,7 +277,7 @@ h2 {
 #category.e4, #category.h4, #category.e4 h2, #category.h4 h2 {
     background-image: linear-gradient(to bottom, #7c0986, #c53fd1);
 }
-#category.e4 h2, #category.h41 h2 {
+#category.e4 h2, #category.h4 h2 {
     text-shadow: 12px 12px 15px #7c0986;
     border-radius: 50px;
 }
@@ -289,8 +294,18 @@ h2 {
     justify-content: center;
     margin-top: 25em;
     padding: 5em 0;
+    animation: pop .25s ease;
 }
-
+@keyframes pop {
+    from {
+        transform: scale(.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
 #category .button{
     margin-top: 0.5em;
     width: 70%;
@@ -298,6 +313,15 @@ h2 {
     border: 1px solid #545454;
     border-radius: 0.5em;
     box-shadow: 0px 0px 10px 10px rgba(146, 146, 146, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: all .5s ease;
+}
+#category .button.show{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 .hide {
     display: none!important;

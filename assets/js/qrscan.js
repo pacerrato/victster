@@ -1,30 +1,24 @@
 function getCameraId() {
-    var cookies = decodeURIComponent(document.cookie);
-    return ""+cookies.match(/(?<=cameraId\=).+?(?=;|$)/);
+    const match = document.cookie.match(/(?:^|;\s*)cameraId=([^;]+)/);
+    return match ? decodeURIComponent(match[1]) : null;
 }
 function scanQr() {
     var html5Qrcode = new Html5Qrcode("qr-reader");
     var config = {fps: 10, qrbox: 700, aspectRatio: 9/16};
     var cameraId = getCameraId();
     html5Qrcode.start(cameraId, config, onScanSuccess);
-    function onScanSuccess(decodedText, decodedResult) {
+    function onScanSuccess(decodedText) {
+        decodedText = decodedText.trim();
         const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
-        if(id){
-            window.location.replace(window.origin+"/pages/song.html?song="+decodedText+"&id="+id);
-        }else{
-            window.location.replace(window.origin+"/pages/song.html?song="+decodedText);
-        }
+        const id = params.get("id");
+        const mode = params.get("mode");
+        const url = new URL(window.origin + "/pages/song.html");
+        url.searchParams.set("song", decodedText);
+        if (mode) url.searchParams.set("mode", mode);
+        if (id) url.searchParams.set("id", id);
+        window.location.replace(url);
     }
 };
 
-function scanBackPage() {
-    const params = new URLSearchParams(window.location.search);
-    const mode = params.get('mode');
-    const id = params.get('id')
-    if (mode === 'normal') {
-        window.location.href = "/pages/mode.html"
-    } else {
-        window.location.href = "/pages/category.html?mode=bingo&id="+id
-    }
-};
+
+document.addEventListener("DOMContentLoaded", scanQr);

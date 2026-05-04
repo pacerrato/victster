@@ -3,16 +3,17 @@
 <head>
     <title>Elige un modo</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/navigation.js"></script>
 </head>
 <body>
     <div id="mode">
         <h2>Elige un modo</h2>
         <div class="modes">
             <a class="button mode-normal" href="scan.html?mode=normal">Modo Normal</button>
-            <a class="button mode-bingo-easy" href="category.html?level=easy">Bingo:<span>Nivel principiante</span></a>
-            <a class="button mode-bingo-hard" href="category.html?level=hard">Bingo:<span>Nivel experto</span></a>
+                <a class="button mode-bingo-easy" href="category.html?level=easy">Bingo:<span>Nivel principiante</span></a>
+                <a class="button mode-bingo-hard" href="category.html?level=hard">Bingo:<span>Nivel experto</span></a>
+            </div>
+            <button class="close-button" onclick="goBack()"></button>
         </div>
-        <a class="close-button" href="../index.html"></a>
-    </div>
-</body>
-</html>
+    </body>
+    </html>
