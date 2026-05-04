@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
     document
-        .getElementById("play-pause")
-        .addEventListener("click", playButtonPushed);
-
+    .getElementById("play-pause")
+    .addEventListener("click", playButtonPushed);
+    
     document
-        .querySelector(".replay-button")
-        .addEventListener("click", replayButtonPushed);
-
+    .querySelector(".replay-button")
+    .addEventListener("click", replayButtonPushed);
+    
     document
-        .getElementById("sol-button")
-        .addEventListener("click", showSolution);
-
+    .getElementById("sol-button")
+    .addEventListener("click", showSolution);
+    
     loadSong();
     playButtonPushed()
 });
@@ -20,7 +20,7 @@ function loadSong() {
     const song = params.get('song');
     const id = params.get('id');
     updateText(id);
-
+    
     document.getElementById("song-source").src = "../assets/media/audio/song"+song+".opus";
     document.getElementById("song").load();
 }
@@ -33,7 +33,22 @@ function updateText(id) {
         .then(data => {
             for (const level in data) {
                 const item = data[level].find(el => el.id === id);
-                if (item) return  document.getElementById("song-status").innerHTML = item.name;
+                if (item) {
+                    document.getElementById("song-status").textContent = "Adivina:";
+                    
+                    let card = document.getElementById("song-card");
+                    
+                    if (!card) {
+                        card = document.createElement("div");
+                        card.id = "song-card";
+                        card.classList.add(item.id)
+                        let category = document.createElement("p");
+                        category.innerHTML=item.name
+                        document.getElementById("song-status").appendChild(card);
+                        card.appendChild(category);
+                    }                     
+                    return;
+                }
             }
             return null;
         })
@@ -46,28 +61,28 @@ function updateText(id) {
 function playButtonPushed() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
-
+    
     const button = document.getElementById("play-pause");
     const audio = document.getElementById("song");
-
+    
     if (audio.paused) {
         audio.play()
-            .then(() => {
-                updateText(id);
-
-                button.classList.remove("play");
-                button.classList.add("pause");
-            })
-            .catch(err => console.error("Play bloqueado:", err));
-
+        .then(() => {
+            updateText(id);
+            
+            button.classList.remove("play");
+            button.classList.add("pause");
+        })
+        .catch(err => console.error("Play bloqueado:", err));
+        
     } else {
         audio.pause();
-
+        
         button.classList.remove("pause");
         button.classList.add("play");
-
+        
         document.getElementById("song-status").textContent =
-            "Canción en pausa.";
+        "Canción en pausa.";
     }
 }
 function replayButtonPushed() {

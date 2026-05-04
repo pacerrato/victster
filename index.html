@@ -3,7 +3,6 @@
 <head>
     <title>VICTSTER</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="../assets/js/home.js"></script>
     <script src="../assets/js/navigation.js"></script>
     <script src="assets/js/settings.js"></script>
     <script src="assets/js/qrlib.js"></script>
@@ -16,7 +15,7 @@
 </head>
 <body>
     <div id="main-menu">
-        <audio id="welcome-song"></audio>
+        <audio id="welcome-song"><source src="assets/media/release-me.mp3" type="audio/mpeg"></audio>
         <h1>VICTSTER</h1>
         <h2 id="subtitle">24<sup>th</sup> anniversary edition</h2>
         <img id="vinyl" src="assets/media/vinilo.webp">
@@ -35,6 +34,6 @@
             </div>
         </div>
     </div>
-    <script>loadCameras();</script>
+    <script>setTimeout(PlayMusic,100); loadCameras();</script>
 </body>
 </html>

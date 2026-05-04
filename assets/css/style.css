@@ -1,10 +1,3 @@
-html, body{
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    overflow: hidden;
-}
-
 @font-face {
     font-family: 'Material Symbols Outlined';
     font-style: normal;
@@ -18,6 +11,14 @@ html, body{
     font-display: swap;
     src: url(../fonts/Orbitron.woff2) format('woff2'), url(../fonts/Orbitron.woff) format ('woff'), url(../fonts/Orbitron.ttf) format ('truetype');
 }
+
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
 h1 {
     letter-spacing: -7px;
     font-size: 10em;
@@ -225,6 +226,8 @@ h2 {
 /*Scan page*/
 
 #scan h2 {
+    position: absolute;
+    top: 0;
     font-family: 'Orbitron';
     font-size: 5em;
     font-weight: lighter;
@@ -253,28 +256,28 @@ h2 {
     transition: all .25s ease;
 }
 
-#category.e1, #category.h1, #category.e1 h2, #category.h1 h2 {
+#category.e1, #category.h1, #category.e1 h2, #category.h1 h2, #song-card.e1 p, #song-card.h1 p {
     background-image: linear-gradient(to bottom, #23775e, #30b88f);
 }
-#category.e1 h2, #category.h1 h2 {
+#category.e1 h2, #category.h1 h2, #song-category.h1 {
     text-shadow: 12px 12px 15px #23775e;
     border-radius: 50px;
 }
-#category.e2, #category.h2, #category.e2 h2, #category.h2 h2 {
+#category.e2, #category.h2, #category.e2 h2, #category.h2 h2, #song-card.e2 p, #song-card.h2 p {
     background-image: linear-gradient(to bottom, #cc4689, #e074aa);
 }
 #category.e2 h2, #category.h2 h2 {
     text-shadow: 12px 12px 15px #cc4689;
     border-radius: 50px;
 }
-#category.e3, #category.h3, #category.e3 h2, #category.h3 h2 {
+#category.e3, #category.h3, #category.e3 h2, #category.h3 h2, #song-card.e3 p, #song-card.h3 p {
     background-image: linear-gradient(to bottom, #e77c01, #ffb84d);
 }
 #category.e3 h2, #category.h3 h2 {
     text-shadow: 12px 12px 15px #e77c01;
     border-radius: 50px;
 }
-#category.e4, #category.h4, #category.e4 h2, #category.h4 h2 {
+#category.e4, #category.h4, #category.e4 h2, #category.h4 h2, #song-card.e4 p, #song-card.h4 p {
     background-image: linear-gradient(to bottom, #7c0986, #c53fd1);
 }
 #category.e4 h2, #category.h4 h2 {
@@ -341,6 +344,12 @@ h2 {
     border-radius: 5em;
     background-color: #ff00ff;
     box-shadow: 0px 0px 15px 15px #ff00ffa0;
+    &:active {
+        background-color: #cc00cc;
+        border: 1px solid #cc00cc;
+        box-shadow: 0px 0px 15px 15px #cc00cca0;
+        transform: scale(0.9,0.9);
+    }
 }
 #songs #music-panel, #songs #music-info{
     display: flex;
@@ -355,9 +364,10 @@ h2 {
     height: 150px;
     margin-bottom: 2.5em;
     font-size: 3em;
-    font-family: 'orbitron';
+    font-family: 'Orbitron';
     color: white;
     border: 1px solid #ff00ff;
+    border-radius: 0.5em;
     background-color: #ff00ff;
     box-shadow: 0px 0px 15px 15px #ff00ffa0;
 }
@@ -370,8 +380,12 @@ h2 {
 }
 
 #songs #song-status{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     text-align: center;
-    font-family: 'orbitron';
+    font-family: 'Orbitron';
     font-weight: lighter;
     font-size: 4em;
     color: white;
@@ -402,6 +416,7 @@ h2 {
     background-image: linear-gradient(to bottom, #1a090d, #6b6570);
     text-shadow: 12px 12px 15px #272727;
     border-radius: 50px;
+    margin: 5em;
 }
 #songs #song-info p{
     margin: 0;
@@ -409,8 +424,18 @@ h2 {
     color: white;
     font-family: 'Orbitron';
     font-weight: lighter;
-    transform: scale(1,1.25);
 }
 #songs #song-info #year{
     font-size: 8em;
+}
+#songs #song-info #title{
+    font-size: 3em;
+}
+#song-card{
+    margin: 1em 1em 0 1em;
+}
+#song-card p {
+    border-radius: 50px;
+    padding: 1em;
+    margin: 0;
 }
